@@ -1,0 +1,199 @@
+/* ============================================
+   GEO INJECTOR PRO - MODERN PROFESSIONAL STYLES
+   ============================================ */
+
+:root {
+    --primary: #667eea;
+    --primary-dark: #5568d3;
+    --success: #10b981;
+    --success-dark: #059669;
+    --danger: #ef4444;
+    --warning: #f59e0b;
+    --dark: #1e293b;
+    --dark-light: #334155;
+    --light: #f8fafc;
+    --gray: #64748b;
+    --gray-light: #e2e8f0;
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
+    --shadow-md: 0 4px 6px rgba(0,0,0,0.07);
+    --shadow-lg: 0 10px 25px rgba(0,0,0,0.1);
+    --shadow-xl: 0 20px 40px rgba(0,0,0,0.15);
+    --radius: 12px;
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    padding: 40px 20px;
+    color: var(--dark);
+    position: relative;
+    overflow-x: hidden;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 20% 50%, rgba(102, 126, 234, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(118, 75, 162, 0.3) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* ============================================
+   HEADER
+   ============================================ */
+
+h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    text-align: center;
+    margin-bottom: 3rem;
+    color: white;
+    text-shadow: 0 2px 20px rgba(0,0,0,0.2);
+    letter-spacing: -0.5px;
+    position: relative;
+    z-index: 1;
+    animation: fadeInDown 0.6s ease-out;
+}
+
+h1::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, transparent, white, transparent);
+    margin: 20px auto 0;
+    border-radius: 2px;
+}
+
+/* ============================================
+   TABLE WRAPPER & COLUMN CONTROL
+   ============================================ */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    table-layout: fixed; /* ESTO EVITA QUE LAS COLUMNAS CAMBIEN DE TAMAÑO */
+}
+
+/* Definimos anchos fijos para que la tabla sea una roca */
+th:nth-child(1), td:nth-child(1) { width: 30%; } /* Región */
+th:nth-child(2), td:nth-child(2) { width: 25%; } /* Tabla SQL */
+th:nth-child(3), td:nth-child(3) { width: 25%; } /* Cantidad */
+th:nth-child(4), td:nth-child(4) { width: 20%; } /* Acción */
+
+thead {
+    background: linear-gradient(135deg, var(--dark) 0%, var(--dark-light) 100%);
+}
+
+th {
+    padding: 20px 24px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    color: white;
+    border-bottom: 3px solid var(--primary);
+}
+
+tbody tr {
+    transition: var(--transition);
+    border-bottom: 1px solid var(--gray-light);
+}
+
+td {
+    padding: 24px;
+    font-size: 0.95rem;
+    vertical-align: middle;
+}
+
+/* ============================================
+   ELEMENTS (INPUTS, BUTTONS, ETC)
+   ============================================ */
+
+code {
+    background: #f1f5f9;
+    padding: 6px 12px;
+    border-radius: 6px;
+    color: var(--primary);
+    font-weight: 500;
+    border: 1px solid var(--gray-light);
+}
+
+input[type="number"] {
+    width: 100%;
+    max-width: 100px;
+    padding: 10px;
+    border: 2px solid var(--gray-light);
+    border-radius: 8px;
+    text-align: center;
+}
+
+.btn {
+    background: linear-gradient(135deg, var(--success) 0%, var(--success-dark) 100%);
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    width: 100%; /* El botón ocupa el ancho de su celda fija */
+    cursor: pointer;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.btn:disabled {
+    background: #cbd5e1;
+    cursor: not-allowed;
+}
+
+/* ============================================
+   TOAST SYSTEM (MESSAGES THAT DON'T MOVE THE TABLE)
+   ============================================ */
+
+#toast-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.toast {
+    min-width: 280px;
+    padding: 16px 24px;
+    border-radius: var(--radius);
+    color: white;
+    font-weight: 600;
+    box-shadow: var(--shadow-xl);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    animation: slideIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: opacity 0.5s;
+}
+
+@keyframes slideIn {
+    from { transform: translateX(100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
